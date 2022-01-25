@@ -10,8 +10,8 @@ function Navbar() {
         <Link to="/"><img src={logo} className="logo"></img></Link>
 
         <div className="nav-buttons">
-          <button to="/login" className="login-button-side">Login</button>
-          <button to="/register" className="register-button-side">Register</button>
+          <button className="login-button-side"><a href="/login">Login</a></button>
+          <button className="register-button-side"><a href="/register">Register</a></button>
         </div>
         
       </nav>
