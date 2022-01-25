@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import CocktailCard from './CocktailCard'
 
 function CocktailShow() {
   const { cocktailId } = useParams()
