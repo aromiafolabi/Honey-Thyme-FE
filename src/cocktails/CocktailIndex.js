@@ -3,10 +3,14 @@ import CocktailCard from './CocktailCard'
 
 import Masonry from 'react-masonry-component'
 import { getAllCocktails } from '../lib/api'
+import Error from '../common/Error'
+import Loading from '../common/Loading'
 
 function CocktailIndex() {
 
   const [allCocktails, setAllCocktails] = React.useState(null)
+  const [isError, setIsError] = React.useState(false)
+  const isLoading = !allCocktails && !isError
 
   React.useEffect(() => {
     const getData = async () => {
@@ -15,7 +19,7 @@ function CocktailIndex() {
         //console.log(res.data)
         setAllCocktails(res.data)
       } catch (err) {
-        console.log(err)
+        setIsError(true)
       }
     }
     getData()
@@ -40,6 +44,8 @@ function CocktailIndex() {
         disableImagesLoaded={false}
         updateOnEachImageLoad={false}
       >
+        {isError && <Error />}
+        {isLoading && <Loading />}
         {allCocktails &&
         allCocktails.map(cocktail => (
           <li className={'photo-item'} key={cocktail.id}>
