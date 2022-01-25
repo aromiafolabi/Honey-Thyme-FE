@@ -7,16 +7,17 @@
 	display: inline-flex;
   flex-direction: row;
 	align-items: center;
-	height: 60px;
+	height: 70px;
 	top: 0;
   background-color: white;
   width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
 
 
 .logo {
   margin: auto;
-  height: 60px;
+  height: 55px;
   margin-left: 50px;
 }
 
@@ -26,18 +27,28 @@
   align-items: center;
   flex: 2;
   margin-right: 50px;
-  font-family: 'Mochiy Pop P One', sans-serif;
+}
 
+.nav-button-login {
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.nav-button-register {
+  text-decoration: none;
+  font-size: 14px;
+  color: #C41E3A;
+  letter-spacing: 1px;
 }
 
 .login-button-side {
-  color: white;
   background-color: #E60023;
   margin-left: 10px;
-  padding: 10px;
+  padding: 12px;
   border-radius: 20px;
   border: none;
-  text-decoration: none;
 }
 
 .login-button-side:hover {
@@ -46,10 +57,9 @@
 }
 
 .register-button-side {
-  color: #C41E3A;
   background-color: #F9F6EE;
-  margin-left: 10px;
-  padding: 10px;
+  margin-left: 15px;
+  padding: 12px;
   border-radius: 20px;
   border: none;
 }
@@ -65,4 +75,26 @@
   @media only screen and (max-width: 600px){
     display: none;
   }
+}
+
+.photo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-left: 5%;
+}
+
+.photo {
+  width: 200px;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.photo-item {
+  list-style-type: none;
+}
+
+.container {
+  height: 300px;
 }

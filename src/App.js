@@ -7,6 +7,8 @@ import Profile from './common/Profile'
 import Login from './auth/Login'
 import Register from './auth/Register'
 import axios from 'axios'
+import CocktailIndex from './cocktails/CocktailIndex'
+import CocktailShow from './cocktails/CocktailShow'
 
 
 
@@ -16,7 +18,7 @@ function App() {
     const getData = async () => {
       try {
         const res = await axios.get('/api/cocktails')
-        console.log(res.data)
+        //console.log(res.data)
         return res.data
       } catch (err) {
         console.log(err)
@@ -30,6 +32,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/cocktails" element={<CocktailIndex />} />
+        <Route path="/cocktails/:cocktailId" element={<CocktailShow />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
