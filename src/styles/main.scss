@@ -104,5 +104,35 @@
 
 .card {
   margin: auto;
-  max-width: 50%;
+  max-width: 70%;
+  border-radius: 50px;
+  margin-top: 20px;
+  border: none;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+img.img-fluid {
+  padding: 20px;
+  border-radius: 50px 50px 50px 50px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.ingredients {
+  display: flex;
+  max-width: 100%;
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.ingredients-title {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.recipe {
+  margin-left: 20px;
 }

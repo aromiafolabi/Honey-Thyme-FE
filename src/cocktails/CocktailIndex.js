@@ -1,7 +1,8 @@
 import React from 'react'
 import CocktailCard from './CocktailCard'
-import axios from 'axios'
+
 import Masonry from 'react-masonry-component'
+import { getAllCocktails } from '../lib/api'
 
 function CocktailIndex() {
 
@@ -10,7 +11,7 @@ function CocktailIndex() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get('/api/cocktails')
+        const res = await getAllCocktails()
         //console.log(res.data)
         setAllCocktails(res.data)
       } catch (err) {
