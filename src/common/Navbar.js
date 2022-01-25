@@ -6,12 +6,12 @@ import logo from '../assets/logo.jpg'
 function Navbar() {
   return (
     <>
-      <nav>
+      <nav className="nav nav-toggle">
         <Link to="/"><img src={logo} className="logo"></img></Link>
 
-        <div>
-          <Link to="/register" className="nav-item">Register</Link>
-          <Link to="/login" className="nav-item">Log in</Link>
+        <div className="nav-buttons">
+          <button to="/login" className="login-button-side">Login</button>
+          <button to="/register" className="register-button-side">Register</button>
         </div>
         
       </nav>

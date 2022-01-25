@@ -3,9 +3,65 @@
   box-sizing: border-box;
 }
 
+.nav {
+	display: inline-flex;
+  flex-direction: row;
+	align-items: center;
+	height: 60px;
+	top: 0;
+  background-color: white;
+  width: 100%;
+}
+
 
 .logo {
   margin: auto;
   height: 60px;
   margin-left: 50px;
+}
+
+.nav-buttons {
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 2;
+  margin-right: 50px;
+  font-family: 'Mochiy Pop P One', sans-serif;
+
+}
+
+.login-button-side {
+  color: white;
+  background-color: #E60023;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+.login-button-side:hover {
+  background-color: #C41E3A;
+  color: white;
+}
+
+.register-button-side {
+  color: #C41E3A;
+  background-color: #F9F6EE;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+.register-button-side:hover {
+  background-color: #EDEADE;
+  color: #C41E3A;
+}
+
+
+
+.nav-toggle {
+  @media only screen and (max-width: 600px){
+    display: none;
+  }
 }
