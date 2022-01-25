@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+// * NAVBAR
+
 .nav {
 	display: inline-flex;
   flex-direction: row;
@@ -16,12 +18,24 @@
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
 
+.nav-toggle {
+  @media only screen and (max-width: 600px){
+    display: none;
+  }
+}
 
 .logo {
   margin: auto;
   height: 55px;
   margin-left: 50px;
 }
+
+.logo:hover {
+  height:60px;
+  transition-duration: 300ms;
+}
+
+// * NAVBAR BUTTONS
 
 .nav-buttons {
   display:flex;
@@ -31,53 +45,209 @@
   margin-right: 50px;
 }
 
-.nav-button-login {
+.nav-button-light {
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
+  color: #E60023;
+  letter-spacing: 1px;
+}
+
+.nav-button-light:hover {
+  color: #E60023;
+}
+
+.nav-button-dark {
+  text-decoration: none;
+  font-size: 15px;
   color: white;
   letter-spacing: 1px;
 }
 
-.nav-button-register {
-  text-decoration: none;
-  font-size: 14px;
-  color: #C41E3A;
-  letter-spacing: 1px;
+.nav-button-dark:hover {
+  color: white;
 }
 
-.login-button-side {
+.cocktails-button {
   background-color: #E60023;
-  margin-left: 10px;
-  padding: 12px;
-  border-radius: 20px;
+  margin-right: 9px;
+  padding: 10px 17px;
+  border-radius: 40px;
   border: none;
 }
 
-.login-button-side:hover {
+.cocktails-button:hover {
   background-color: #C41E3A;
   color: white;
 }
 
-.register-button-side {
-  background-color: #F9F6EE;
-  margin-left: 15px;
-  padding: 12px;
-  border-radius: 20px;
+.login-button {
+  background-color: #E60023;
+  margin-left: 9px;
+  margin-right: 9px;
+  padding: 10px 17px;
+  border-radius: 40px;
   border: none;
 }
 
-.register-button-side:hover {
+.login-button:hover {
+  background-color: #C41E3A;
+  color: white;
+}
+
+.register-button {
+  background-color: #F9F6EE;
+  margin-left: 9px;
+  padding: 10px 17px;
+  border-radius: 40px;
+  border: none;
+}
+
+.register-button:hover {
   background-color: #EDEADE;
   color: #C41E3A;
 }
 
+// * HOME PAGE
 
-
-.nav-toggle {
-  @media only screen and (max-width: 600px){
-    display: none;
-  }
+.landing {
+  margin: 50px;
 }
+
+.landing-title {
+  font-size: 60px;
+}
+
+.landing-subtitle {
+  font-size: 30px;
+}
+
+.title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: #DF8453;
+  --color-2: #3D8DAE;
+  --color-3: #E4A9A8;
+}
+
+.title-word-2 {
+  --color-1: #DBAD4A;
+  --color-2: #ACCFCB;
+  --color-3: #17494D;
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
+}
+
+// * REGISTER PAGE
+
+.card-body{
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-title {
+  margin-top: 20px;
+}
+
+.register-logo {
+  height: 80px;
+}
+
+.register-title {
+  font-size: 28px;
+}
+
+.register-subtitle {
+  font-size: 17x;
+  margin-bottom: 35px;
+}
+
+.form-label {
+  color: #808080;
+  font-size: 14px;
+}
+
+.already {
+  color: #808080;
+}
+
+.red-button {
+  background-color: #E60023;
+  margin-left: 9px;
+  margin-right: 9px;
+  padding: 10px 17px;
+  border-radius: 40px;
+  border: none;
+}
+
+.red-button:hover {
+  background-color: #C41E3A;
+  color: white;
+}
+
+.red-button-dark {
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.red-button-dark:hover {
+  color: white;
+}
+
+.white-button {
+  background-color: #F9F6EE;
+  margin-left: 9px;
+  margin-right: 9px;
+  padding: 10px 17px;
+  border-radius: 40px;
+  border: none;
+}
+
+.white-button:hover {
+  background-color: #EDEADE;
+  color: white;
+}
+
+.white-button-light {
+  text-decoration: none;
+  font-size: 15px;
+  color: #E60023;
+  letter-spacing: 1px;
+}
+
+.white-button-light:hover {
+  color: #E60023;
+}
+
+.form-control {
+  border-radius: 20px;
+}
+
+// * COCKTAIL INDEX
 
 .photo-list {
   display: flex;
@@ -97,10 +267,11 @@
   list-style-type: none;
 }
 
+// * SHOW COCKTAIL PAGE
+
 .container {
   height: 300px;
 }
-
 
 .card {
   margin: auto;

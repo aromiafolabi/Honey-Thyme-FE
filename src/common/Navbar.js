@@ -10,9 +10,9 @@ function Navbar() {
         <Link to="/"><img src={logo} className="logo"></img></Link>
 
         <div className="nav-buttons">
-          <button className="login-button-side"><a href="/cocktails" className="nav-button-login">Cocktails</a></button>
-          <button className="login-button-side"><a href="/login" className="nav-button-login">Login</a></button>
-          <button className="register-button-side"><a href="/register" className="nav-button-register">Register</a></button>
+          <button className="cocktails-button"><a href="/cocktails" className="nav-button-dark">Cocktails</a></button>
+          <button className="login-button"><a href="/login" className="nav-button-dark">Login</a></button>
+          <button className="register-button"><a href="/register" className="nav-button-light">Register</a></button>
         </div>
         
       </nav>
