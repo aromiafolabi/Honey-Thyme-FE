@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
 *{
   margin:0;
   box-sizing: border-box;
@@ -97,4 +99,10 @@
 
 .container {
   height: 300px;
+}
+
+
+.card {
+  margin: auto;
+  max-width: 50%;
 }

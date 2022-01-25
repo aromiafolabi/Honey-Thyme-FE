@@ -31,25 +31,27 @@ function CocktailIndex() {
 
 
   return (
-    <Masonry 
-      className={'photo-list'}
-      elementType={'ul'}
-      options={masonryOptions}
-      disableImagesLoaded={false}
-      updateOnEachImageLoad={false}
-    >
-      {allCocktails &&
+    <div>
+      <Masonry 
+        className={'photo-list'}
+        elementType={'ul'}
+        options={masonryOptions}
+        disableImagesLoaded={false}
+        updateOnEachImageLoad={false}
+      >
+        {allCocktails &&
         allCocktails.map(cocktail => (
-          <li className={'photo-item'} key={cocktail._id}>
+          <li className={'photo-item'} key={cocktail.id}>
             <CocktailCard
-              key={cocktail._id}
+              key={cocktail.id}
               image={cocktail.image}
-              cocktailId={cocktail._id}
+              cocktailId={cocktail.id}
             />
           </li>
         ))
-      } 
-    </Masonry>
+        } 
+      </Masonry>
+    </div>
   )
 }
 
