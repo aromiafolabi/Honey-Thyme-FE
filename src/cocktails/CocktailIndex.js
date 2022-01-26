@@ -19,6 +19,7 @@ function CocktailIndex() {
         //console.log(res.data)
         setAllCocktails(res.data)
       } catch (err) {
+        console.log(err)
         setIsError(true)
       }
     }

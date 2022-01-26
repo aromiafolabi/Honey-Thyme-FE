@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
 const initialState = {
-  fullName: '',
   username: '',
+  profileImage: '',
   email: '',
   password: '',
   passwordConfirmation: '',
@@ -23,11 +23,13 @@ function Register() {
     e.preventDefault()
     try {
       await registerUser(formData)
-      navigate.push('/login')
+      navigate('/login')
     } catch (err) {
-      console.log(err.response.data)
+      console.log(err)
     }
   }
+
+  console.log(formData)
 
   return (
     <div className="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -47,32 +49,57 @@ function Register() {
 
                 <form onSubmit={handleSubmit}>
                   <div className="form-outline mb-2">
-                    <input type="text" id="form3Example1cg" className="form-control form-control-lg" onChange={handleChange}/>
-                    <label className="form-label" >Full Name</label>
-                  </div>
-
-                  <div className="form-outline mb-2">
-                    <input type="email" id="form3Example3cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <input 
+                      type="text" 
+                      name="username"
+                      id="form3Example1cg" 
+                      className="form-control form-control-lg" 
+                      onChange={handleChange}/>
                     <label className="form-label" >Username</label>
                   </div>
 
                   <div className="form-outline mb-2">
-                    <input type="email" id="form3Example3cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <input 
+                      type="text"
+                      name="profileImage"
+                      id="form3Example3cg" 
+                      className="form-control form-control-lg" 
+                      onChange={handleChange}/>
+                    <label className="form-label" >Profile Image</label>
+                  </div>
+
+                  <div className="form-outline mb-2">
+                    <input 
+                      type="email" 
+                      name="email"
+                      id="form3Example3cg" 
+                      className="form-control form-control-lg" 
+                      onChange={handleChange}/>
                     <label className="form-label" >Your Email</label>
                   </div>
 
                   <div className="form-outline mb-2">
-                    <input type="password" id="form3Example4cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <input 
+                      type="password" 
+                      name="password"
+                      id="form3Example4cg" 
+                      className="form-control form-control-lg" 
+                      onChange={handleChange}/>
                     <label className="form-label" >Password</label>
                   </div>
 
                   <div className="form-outline mb-2">
-                    <input type="password" id="form3Example4cdg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <input 
+                      type="password" 
+                      name="passwordConfirmation"
+                      id="form3Example4cdg" 
+                      className="form-control form-control-lg" 
+                      onChange={handleChange}/>
                     <label className="form-label" >Repeat password</label>
                   </div>
 
                   <div className="d-flex justify-content-center">
-                    <button type="button" className="red-button"><a href="/register" className="red-button-dark">Register</a></button>
+                    <button type="submit" className="red-button">Register</button>
                   </div>
 
                   <p className="text-center mt-5 mb-0 already">Already a member? <button type="button" className="white-button"><a href="/login" className="white-button-light">Login</a></button></p>

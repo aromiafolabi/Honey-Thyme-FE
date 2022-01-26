@@ -1,0 +1,23 @@
+import { isOwner } from '../lib/auth'
+
+function CocktailCommentCard({  content, owner, handleDelete }) {
+  return (
+    <div>
+      <div>
+        <div>
+          <div>
+            <p>
+              <strong>{owner}</strong>
+              <br />
+              {content}
+            </p>
+            {isOwner(owner) &&
+              <button onClick={handleDelete}>X</button>}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default CocktailCommentCard
