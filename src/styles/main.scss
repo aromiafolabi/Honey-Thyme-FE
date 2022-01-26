@@ -80,6 +80,20 @@
   color: white;
 }
 
+.profile-button {
+  background-color: #E60023;
+  margin-right: 9px;
+  margin-left: 9px;
+  padding: 10px 17px;
+  border-radius: 40px;
+  border: none;
+}
+
+.profile-button:hover {
+  background-color: #C41E3A;
+  color: white;
+}
+
 .login-button {
   background-color: #E60023;
   margin-left: 9px;
@@ -195,6 +209,7 @@
 
 .red-button {
   background-color: #E60023;
+  color: white;
   margin-left: 9px;
   margin-right: 9px;
   padding: 10px 17px;

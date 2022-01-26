@@ -1,5 +1,5 @@
 import React from 'react'
-import { getProfileInfo, getFavourites } from '../lib/api'
+import { getProfileInfo, getSaves } from '../lib/api'
 import { getId } from '../lib/auth'
 import CocktailCard from '../cocktails/CocktailCard'
 
@@ -7,7 +7,7 @@ import CocktailCard from '../cocktails/CocktailCard'
 function Profile() {
 
   const [profileInfo, setProfileInfo] = React.useState(null)
-  const [favourites, setFavourites] = React.useState(null)
+  const [saves, setSaves] = React.useState(null)
 
   React.useEffect(() => {
     const getData = async () => {
@@ -24,11 +24,11 @@ function Profile() {
 
   React.useEffect(() => {
     const getData = async () => {
-      console.log('attempt to get fave')
+      console.log('attempt to get save')
       try {
         const id = getId()
-        const res = await getFavourites(id)
-        setFavourites(res.data)
+        const res = await getSaves(id)
+        setSaves(res.data)
       } catch (err) {
         console.log(err)
       }
@@ -54,12 +54,12 @@ function Profile() {
         </div>
         <div>
           {
-            (favourites && (favourites.length > 0)) &&
-            favourites.map(favourites => (
+            (saves && (saves.length > 0)) &&
+            saves.map(saves => (
               <CocktailCard
-                key={favourites.id}
-                image={favourites.image}
-                cocktailId={favourites.id}
+                key={saves.id}
+                image={saves.image}
+                cocktailId={saves.id}
               />
             ))
           }

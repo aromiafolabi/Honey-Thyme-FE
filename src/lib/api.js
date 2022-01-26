@@ -23,14 +23,15 @@ export function deleteCocktail(cocktailId) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}`, headers())
 }
 
-export function toggleFavourties(cocktailId) {
+export function toggleSaves(cocktailId) {
   return axios.post(`${baseUrl}/cocktails/${cocktailId}`, cocktailId, headers())
 }
 
 // * LOGIN/REGISTER
 
 export function registerUser(formData) {
-  return axios.post(`${baseUrl}/register`, formData)
+  console.log(formData)
+  return axios.post(`${baseUrl}/register/`, formData)
 }
 
 export function loginUser(formData) {
@@ -64,6 +65,6 @@ export function getProfileInfo(userId) {
   return axios.get(`${baseUrl}/profile/${userId}`)
 }
 
-export function getFavourites(userId) {
-  return axios.get(`${baseUrl}/profile/${userId}/favourites`, headers())
+export function getSaves(userId) {
+  return axios.get(`${baseUrl}/profile/${userId}/saves`, headers())
 }

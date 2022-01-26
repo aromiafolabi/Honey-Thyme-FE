@@ -1,8 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../lib/api'
-import { setToken } from '../lib/auth'
-import { getAllCocktails } from '../lib/api'
+import { setToken, setId } from '../lib/auth'
 import logo from '../assets/logo.jpg'
 
 const initialState = {
@@ -14,19 +13,6 @@ function Login() {
   const navigate = useNavigate()
   const [formData, setFormData] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
-
-  React.useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await getAllCocktails()
-        setToken(data)
-      } catch (err) {
-        setIsError(true)
-      }
-    }
-    getData()
-  }, [])
-
 
 
   const handleChange = (e) => {
@@ -40,12 +26,15 @@ function Login() {
     try {
       const res = await loginUser(formData)
       console.log(res.data.token)
+      console.log('hello')
+      setId(res.data._id)
       setToken(res.data.token)
       navigate('/cocktails')
     } catch (err) {
       setIsError(true)
     }
   }
+
 
   return (
     <div className="mask d-flex align-items-center h-100 gradient-custom-3">

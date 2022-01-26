@@ -1,17 +1,17 @@
 import { isOwner } from '../lib/auth'
 
-function CocktailCommentCard({  content, profile, handleDelete }) {
+function CocktailCommentCard({  content, owner, handleDelete }) {
   return (
     <div>
       <div>
         <div>
           <div>
             <p>
-              <strong>{profile.username}</strong>
+              <strong>{owner}</strong>
               <br />
               {content}
             </p>
-            {isOwner(profile._id) &&
+            {isOwner(owner) &&
               <button onClick={handleDelete}>X</button>}
           </div>
         </div>

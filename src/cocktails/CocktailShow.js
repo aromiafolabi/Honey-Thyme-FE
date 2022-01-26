@@ -13,8 +13,9 @@ function CocktailShow() {
   const [cocktail, setCocktail] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !cocktail && !isError
-
-  console.log(cocktailId)
+  const isLoggedIn = isAuthenticated()
+  console.log(isLoggedIn)
+  //console.log(cocktailId)
 
   const fetchCocktail = React.useCallback(() => {
     const getData = async () => {
@@ -33,7 +34,7 @@ function CocktailShow() {
     fetchCocktail()
   }, [cocktailId, fetchCocktail])
 
-  console.log(cocktailId)
+  //console.log(cocktail)
 
   const handleDelete = async () => {
     if (window.confirm('Do you want to delete this cocktail?')) {
@@ -125,43 +126,43 @@ function CocktailShow() {
                     </div>
                   </div>
                 </div>
-                
               </div> 
+              {isOwner(cocktail.owner) && (
+                <div className="buttons">
+                  <Link
+                    to={`/cocktails/${cocktailId}/edit`}
+                  >
+          Edit this Cocktail
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                  >
+          Delete this Cocktail
+                  </button>
+                </div>
+              )}
+
+              <div className="column">
+                {cocktail.comments.map(comment => (
+                  <CocktailCommentCard
+                    key={comment._id}
+                    content={comment.content}
+                    owner={comment.owner}
+                    handleDelete={() => handleDeleteComment(comment._id)}
+                  />
+                ))}
+              </div>
+              {isAuthenticated() && (
+                <CocktailCommentForm
+                  fetchcocktail={fetchCocktail}
+                  cocktailId={cocktailId}
+                />
+              )}
             </>
           )}
         </div>
       </div>
-      {isOwner(cocktail.profile.id) && (
-        <div className="buttons">
-          <Link
-            to={`/Cocktails/${cocktailId}/edit`}
-          >
-          Edit this Cocktail
-          </Link>
-          <button
-            onClick={handleDelete}
-          >
-          Delete this Cocktail
-          </button>
-        </div>
-      )}
-
-      <div className="column">
-        {cocktail.comments.map(comment => (
-          <CocktailCommentCard
-            key={comment._id}
-            content={comment.content}
-            profile={comment.profile}
-            handleDelete={() => handleDeleteComment(comment._id)}
-          />
-        ))}
-      </div>
-      {isAuthenticated() && (
-        <CocktailCommentForm
-          fetchcocktail={fetchCocktail}
-          cocktailId={cocktailId}
-        />
-      )}
+      
     </div>
   )
 }
