@@ -19,7 +19,7 @@ export function getSingleCocktail(cocktailId) {
   return axios.get(`${baseUrl}/cocktails/${cocktailId}`)
 }
 
-export function toggleFavourties(cocktailId) {
+export function toggleSaves(cocktailId) {
   return axios.post(`${baseUrl}/cocktails/${cocktailId}`, cocktailId, headers())
 }
 
@@ -48,6 +48,6 @@ export function getProfileInfo(userId) {
   return axios.get(`${baseUrl}/profile/${userId}`)
 }
 
-export function getFavourites(userId) {
+export function getSaves(userId) {
   return axios.get(`${baseUrl}/profile/${userId}/favourites`, headers())
 }
