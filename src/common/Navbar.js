@@ -5,6 +5,7 @@ import React from 'react'
 
 
 function Navbar() {
+
   const [searchedValue, setSearchedValue] = React.useState('')
   const handleSearch = (e) => {
     e.preventDefault()
@@ -16,6 +17,7 @@ function Navbar() {
       <nav className="nav nav-toggle">
         <Link to="/"><img src={logo} className="logo"></img></Link>
         <input className="Search-bar" type="search" placeholder="Search cocktails..." onChange={handleSearch}/>
+        {/* <input type="search" className="search form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch}/> */}
         <div className="nav-buttons">
           
           <button className="cocktails-button"><a href="/cocktails" className="nav-button-dark">Cocktails</a></button>
@@ -31,3 +33,6 @@ function Navbar() {
 }
 
 export default Navbar
+
+
+
