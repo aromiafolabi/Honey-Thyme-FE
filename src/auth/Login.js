@@ -4,8 +4,9 @@ import { loginUser } from '../lib/api'
 import { setToken, setId } from '../lib/auth'
 import logo from '../assets/logo.jpg'
 
+
 const initialState = {
-  email: '',
+  username: '',
   password: '',
 }
 
@@ -18,12 +19,13 @@ function Login() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
-
+  console.log(formData)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    console.log(formData)
     try {
+      console.log(formData)
       const res = await loginUser(formData)
       console.log(res.data.token)
       console.log('hello')
@@ -34,7 +36,7 @@ function Login() {
       setIsError(true)
     }
   }
-
+  
 
   return (
     <div className="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -53,13 +55,13 @@ function Login() {
 
                 <form onSubmit={handleSubmit}>
                   <div className="form-outline mb-2">
-                    <input type="email" id="form3Example3cg" className="form-control form-control-lg" onChange={handleChange}/>
-                    <label className="form-label" >Your Email</label>
+                    <input type="username" name="username" id="form3Example3cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <label className="form-label" >Username</label>
                   </div>
 
           
                   <div className="form-outline mb-2">
-                    <input type="password" id="form3Example4cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <input type="password" name="password" id="form3Example4cg" className="form-control form-control-lg" onChange={handleChange}/>
                     <label className="form-label" >Password</label>
                   </div>
 
@@ -68,7 +70,7 @@ function Login() {
                   )}
 
                   <div className="d-flex justify-content-center">
-                    <button type="button" className="red-button"><a href="/cocktails" className="red-button-dark">Login</a></button>
+                    <button type="button" className="red-button">Login</button>
                   </div>
           
                   <p className="text-center mt-5 mb-0 already">Not a member yet? <button type="button" className="white-button"><a href="/register" className="white-button-light">Register</a></button></p>

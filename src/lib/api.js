@@ -35,7 +35,8 @@ export function registerUser(formData) {
 }
 
 export function loginUser(formData) {
-  return axios.post(`${baseUrl}/login`, formData)
+  console.log(formData)
+  return axios.post(`${baseUrl}/login/`, formData)
 }
 
 
