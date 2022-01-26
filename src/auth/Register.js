@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
 const initialState = {
+  fullName: '',
   username: '',
   email: '',
   password: '',
@@ -47,7 +48,12 @@ function Register() {
                 <form onSubmit={handleSubmit}>
                   <div className="form-outline mb-2">
                     <input type="text" id="form3Example1cg" className="form-control form-control-lg" onChange={handleChange}/>
-                    <label className="form-label" >Your Name</label>
+                    <label className="form-label" >Full Name</label>
+                  </div>
+
+                  <div className="form-outline mb-2">
+                    <input type="email" id="form3Example3cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <label className="form-label" >Username</label>
                   </div>
 
                   <div className="form-outline mb-2">
