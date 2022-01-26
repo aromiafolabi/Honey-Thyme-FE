@@ -35,6 +35,15 @@
   transition-duration: 300ms;
 }
 
+.search {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
 // * NAVBAR BUTTONS
 
 .nav-buttons {
@@ -123,6 +132,15 @@
 
 // * HOME PAGE
 
+.photo-list-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-left: 5%;
+  pointer-events:none !important;
+}
+
 .landing {
   margin: 50px;
 }
@@ -183,14 +201,11 @@
 
 .register-title {
   margin-top: 20px;
+  font-size: 28px;
 }
 
 .register-logo {
   height: 80px;
-}
-
-.register-title {
-  font-size: 28px;
 }
 
 .register-subtitle {
@@ -280,13 +295,16 @@
 
 .photo-item {
   list-style-type: none;
+  margin-top: 30px;
 }
 
 
 // * LOGIN PAGE
 
 .login-title {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 28px;
 }
 
 // * SHOW COCKTAIL PAGE
