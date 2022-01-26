@@ -3,6 +3,7 @@ import React from 'react'
 import { createCocktailComment } from '../lib/api'
 
 function CocktailCommentForm({ fetchCocktail, cocktailId }) {
+
   const [commentValue, setCommentValue] = React.useState('')
   const [isError, setIsError] = React.useState(false)
 
@@ -12,7 +13,6 @@ function CocktailCommentForm({ fetchCocktail, cocktailId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     try {
       await createCocktailComment(cocktailId, { content: commentValue })
       setCommentValue('')

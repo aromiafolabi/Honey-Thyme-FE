@@ -146,10 +146,10 @@ function CocktailShow() {
               <div className="column">
                 {cocktail.comments.map(comment => (
                   <CocktailCommentCard
-                    key={comment._id}
+                    key={comment.id}
                     content={comment.content}
                     owner={comment.owner}
-                    handleDelete={() => handleDeleteComment(comment._id)}
+                    handleDelete={() => handleDeleteComment(comment.id)}
                   />
                 ))}
               </div>

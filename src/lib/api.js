@@ -55,7 +55,7 @@ export function deleteProfile(profileId) {
 // * COMMENT REQUESTS
 
 export function createCocktailComment(cocktailId, formData) {
-  return axios.post(`${baseUrl}/cocktails/${cocktailId}/comments`, formData, headers())
+  return axios.post(`${baseUrl}/cocktails/${cocktailId}/comments/`, formData, headers())
 }
 
 export function deleteCocktailComment(cocktailId, commentId) {
