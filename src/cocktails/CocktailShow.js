@@ -71,6 +71,7 @@ function CocktailShow() {
               </div>
               <div className="col-md-6">
                 <div className="card-body">
+                  <button type="save-button" className="message-button">Save</button>
                   <p className="card-title">{cocktail.name}</p>
                   <p className="card-text">{cocktail.about}</p>
                   <p className="card-text"><strong>Serves</strong> {cocktail.serves}</p>

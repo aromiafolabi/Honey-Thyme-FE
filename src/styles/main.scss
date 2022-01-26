@@ -347,3 +347,44 @@ img.img-fluid {
 .recipe {
   margin-left: 20px;
 }
+
+
+// * COMMENT FORM
+
+.control1 {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+  margin-top: 70px;
+}
+.control2 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.textarea {
+  height: 50px;
+	line-height: 25px;
+	font-size: 16px;
+	padding: 0;
+  border-radius: 25px;
+  width: 300px;
+}
+
+.message-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+  background-color: #E60023;
+  color: white;
+  padding: 10px 17px;
+  border-radius: 40px;
+  border: none;
+}
+
+.message-button:hover {
+  background-color: #C41E3A;
+  color: white;
+}

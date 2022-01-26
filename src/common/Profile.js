@@ -38,6 +38,7 @@ function Profile() {
 
   return (
     <>
+      <h1>hi</h1>
       <div className="profile-container">
         {
           (profileInfo && profileInfo.profileImage) &&

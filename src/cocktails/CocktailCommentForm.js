@@ -23,17 +23,27 @@ function CocktailCommentForm({ fetchCocktail, cocktailId }) {
   }
 
   return (
-    <form  onSubmit={handleSubmit}>
-      <div className="field">
-        <div className="control">
-          <textarea className="textarea" name="content" onChange={handleChange} value={commentValue}/>
+    <div className="message-area">
+
+      <form  onSubmit={handleSubmit}>
+
+        <div className="field">
+
+          <div className="control1">
+            <textarea className="textarea border" name="content" onChange={handleChange} value={commentValue}/>
+          </div>
+
+          <div className="control2">
+            <button type="login-button" className="message-button">Send</button>
+          </div>
+
+          {isError && <p className="help is-danger">Please write a comment and try again!</p>}
+      
         </div>
-        {isError && <p className="help is-danger">Please write a comment and try again!</p>}
-      </div>
-      <div className="field">
-        <button type="submit" className="button is-warning">Comment</button>
-      </div>
-    </form>
+
+      </form>
+
+    </div>
   )
 
 }
