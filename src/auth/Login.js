@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../lib/api'
-import { setToken } from '../lib/auth'
+import { setToken, setId } from '../lib/auth'
 import logo from '../assets/logo.jpg'
 
 
@@ -29,7 +29,8 @@ function Login() {
       const res = await loginUser(formData)
       console.log(res.data.token)
       console.log('hello')
-      // setId(res.data._id)
+      console.log(res.data)
+      setId(res.data.id)
       setToken(res.data.token)
       navigate('/cocktails')
     } catch (err) {
