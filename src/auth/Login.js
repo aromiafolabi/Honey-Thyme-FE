@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
 import { getAllCocktails } from '../lib/api'
+import logo from '../assets/logo.jpg'
 
 const initialState = {
   email: '',
@@ -13,14 +14,12 @@ function Login() {
   const navigate = useNavigate()
   const [formData, setFormData] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
-  const [profiles, setProfiles] = React.useState([])
-  const [email, setEmail] = React.useState('')
 
   React.useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await getAllCocktails()
-        setProfiles(data)
+        setToken(data)
       } catch (err) {
         setIsError(true)
       }
@@ -49,35 +48,49 @@ function Login() {
   }
 
   return (
-    <>
-      <div className="login-body">
-        <h5 className="login-title">Log in</h5>
-        <form className="login-text" onSubmit={handleSubmit}>
-          <label className="authLabel" htmlFor="email">
+    <div className="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div className="container h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col-12 col-md-8 col-lg-6 col-xl-7">
+            <div className="card">
+              
+              <div className="card-body p-5">
+                <div className="center">
+                  <img src={logo} className="register-logo"></img>
+                </div>
+                <h5 className="login-title text-center">
+                    Welcome Back
+                </h5>
 
-          </label>
-          <input 
-            placeholder='Username'
-            name='username'
-            onChange={handleChange}
-          />
-          <input
-            placeholder='Password'
-            name='password'
-            type='password'
-            onChange={handleChange}
-          />
+                <form onSubmit={handleSubmit}>
+                  <div className="form-outline mb-2">
+                    <input type="email" id="form3Example3cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <label className="form-label" >Your Email</label>
+                  </div>
+
           
-          <button type='submit' className="authButton">
-          Log in
-          </button>
-        </form>
-        <p className="card-text-register"><small className="text-muted">
-          Dont have an account? </small>
-        <button className="regButton"><a href="/register">Register</a></button>
-        </p>
+                  <div className="form-outline mb-2">
+                    <input type="password" id="form3Example4cg" className="form-control form-control-lg" onChange={handleChange}/>
+                    <label className="form-label" >Password</label>
+                  </div>
+
+                  {isError && (
+                    <p>Password or Email were incorrect.</p>
+                  )}
+
+                  <div className="d-flex justify-content-center">
+                    <button type="button" className="red-button"><a href="/cocktails" className="red-button-dark">Login</a></button>
+                  </div>
+          
+                  <p className="text-center mt-5 mb-0 already">Not a member yet? <button type="button" className="white-button"><a href="/register" className="white-button-light">Register</a></button></p>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 

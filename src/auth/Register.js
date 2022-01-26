@@ -66,7 +66,7 @@ function Register() {
                   </div>
 
                   <div className="d-flex justify-content-center">
-                    <button type="button" className="red-button"><a href="/register" className="red-button-dark">Register</a></button>
+                    <button type="button" className="red-button"><a href="/login" className="red-button-dark">Register</a></button>
                   </div>
 
                   <p className="text-center mt-5 mb-0 already">Already a member? <button type="button" className="white-button"><a href="/login" className="white-button-light">Login</a></button></p>

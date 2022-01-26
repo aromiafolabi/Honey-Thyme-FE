@@ -19,6 +19,10 @@ export function getSingleCocktail(cocktailId) {
   return axios.get(`${baseUrl}/cocktails/${cocktailId}`)
 }
 
+export function deleteCocktail(cocktailId) {
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}`, headers())
+}
+
 // * LOGIN/REGISTER
 
 export function registerUser(formData) {
@@ -32,10 +36,22 @@ export function loginUser(formData) {
 
 //* USER REQUESTS
 
+
 export function editProfile(userId, formData) {
-  return axios.put(`${baseUrl}/account/${userId}`, formData, headers())
+  return axios.put(`${baseUrl}/profile/${userId}`, formData, headers())
 }
 
 export function deleteProfile(userId) {
-  return axios.delete(`${baseUrl}/account/${userId}`, headers())
+  return axios.delete(`${baseUrl}/profile/${userId}`, headers())
+}
+
+
+// * COMMENT REQUESTS
+
+export function createCocktailComment(cocktailId, formData) {
+  return axios.post(`${baseUrl}/cocktails/${cocktailId}/comments`, formData, headers())
+}
+
+export function deleteCocktailComment(cocktailId, commentId) {
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/comments/${commentId}`, headers())
 }
