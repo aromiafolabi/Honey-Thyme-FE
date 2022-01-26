@@ -7,6 +7,7 @@ import Loading from '../common/Loading'
 import CocktailCommentCard from './CocktailCommentCard'
 import CocktailCommentForm from './CocktailCommentForm'
 import { Link } from 'react-router-dom'
+import arrow from '../assets/arrow.png'
 
 function CocktailShow() {
   const { cocktailId } = useParams()
@@ -71,7 +72,9 @@ function CocktailShow() {
               </div>
               <div className="col-md-6">
                 <div className="card-body">
-                  <button type="save-button" className="message-button">Save</button>
+                  <div className='save-button-area'>
+                    <button type="save-button" className="message-button">Save</button>
+                  </div>
                   <p className="card-title">{cocktail.name}</p>
                   <p className="card-text">{cocktail.about}</p>
                   <p className="card-text"><strong>Serves</strong> {cocktail.serves}</p>
@@ -144,6 +147,13 @@ function CocktailShow() {
               )}
 
               <div className="column">
+
+                <div className="comments-area">
+                  <div className="comments">
+                    <h2 className="comments-title">Comments <img src={arrow} className="arrow"></img></h2>
+                  </div>
+                </div>
+
                 {cocktail.comments.map(comment => (
                   <CocktailCommentCard
                     key={comment.id}
