@@ -23,6 +23,10 @@ export function deleteCocktail(cocktailId) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}`, headers())
 }
 
+export function toggleFavourties(cocktailId) {
+  return axios.post(`${baseUrl}/cocktails/${cocktailId}`, cocktailId, headers())
+}
+
 // * LOGIN/REGISTER
 
 export function registerUser(formData) {
@@ -54,4 +58,12 @@ export function createCocktailComment(cocktailId, formData) {
 
 export function deleteCocktailComment(cocktailId, commentId) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}/comments/${commentId}`, headers())
+}
+
+export function getProfileInfo(userId) {
+  return axios.get(`${baseUrl}/profile/${userId}`)
+}
+
+export function getFavourites(userId) {
+  return axios.get(`${baseUrl}/profile/${userId}/favourites`, headers())
 }

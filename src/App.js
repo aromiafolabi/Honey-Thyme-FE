@@ -6,26 +6,12 @@ import Home from './common/Home'
 import Profile from './common/Profile'
 import Login from './auth/Login'
 import Register from './auth/Register'
-import axios from 'axios'
 import CocktailIndex from './cocktails/CocktailIndex'
 import CocktailShow from './cocktails/CocktailShow'
 
 
 
 function App() {
-
-  React.useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get('/api/cocktails')
-        //console.log(res.data)
-        return res.data
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [])
 
   return (
     <BrowserRouter>

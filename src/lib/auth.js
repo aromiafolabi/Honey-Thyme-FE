@@ -30,3 +30,11 @@ export function isOwner(userId) {
   if (!payload) return false
   return userId === payload.sub
 }
+
+export function setId(userId) {
+  return window.localStorage.setItem('userId', userId)
+}
+
+export function getId(userId) {
+  return window.localStorage.getItem('userId', userId)
+}
