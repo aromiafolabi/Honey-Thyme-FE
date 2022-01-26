@@ -1,11 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../lib/api'
-import { setToken } from '../lib/auth'
+import { setToken, setId } from '../lib/auth'
 import logo from '../assets/logo.jpg'
 
+
 const initialState = {
-  email: '',
+  username: '',
   password: '',
 }
 
@@ -18,16 +19,18 @@ function Login() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
-
+  console.log(formData)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    console.log(formData)
     try {
+      console.log(formData)
       const res = await loginUser(formData)
       console.log(res.data.token)
       console.log('hello')
-      // setId(res.data._id)
+      console.log(res.data)
+      setId(res.data.id)
       setToken(res.data.token)
       navigate('/cocktails')
     } catch (err) {

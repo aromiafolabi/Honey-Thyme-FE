@@ -44,10 +44,10 @@ export function isOwner(userId) {
   return userId === payload.sub
 }
 
-export function setId(userId) {
-  return window.localStorage.setItem('userId', userId)
+export function setId(profileId) {
+  return window.localStorage.setItem('profileId', profileId)
 }
 
-export function getId(userId) {
-  return window.localStorage.getItem('userId', userId)
+export function getId(profileId) {
+  return window.localStorage.getItem('profileId', profileId)
 }

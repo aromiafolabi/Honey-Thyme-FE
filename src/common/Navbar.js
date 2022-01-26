@@ -25,7 +25,6 @@ function Navbar() {
           <button className="login-button"><a href="/login" className="nav-button-dark">Login</a></button>
           <button className="register-button"><a href="/register" className="nav-button-light">Register</a></button>
         </div>
-        
       </nav>
       
     </>

@@ -43,12 +43,12 @@ export function loginUser(formData) {
 //* USER REQUESTS
 
 
-export function editProfile(userId, formData) {
-  return axios.put(`${baseUrl}/profile/${userId}`, formData, headers())
+export function editProfile(profileId, formData) {
+  return axios.put(`${baseUrl}/profile/${profileId}/`, formData, headers())
 }
 
-export function deleteProfile(userId) {
-  return axios.delete(`${baseUrl}/profile/${userId}`, headers())
+export function deleteProfile(profileId) {
+  return axios.delete(`${baseUrl}/profile/${profileId}/`, headers())
 }
 
 
@@ -62,10 +62,10 @@ export function deleteCocktailComment(cocktailId, commentId) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}/comments/${commentId}`, headers())
 }
 
-export function getProfileInfo(userId) {
-  return axios.get(`${baseUrl}/profile/${userId}`)
+export function getProfileInfo(profileId) {
+  return axios.get(`${baseUrl}/profile/${profileId}/`, headers())
 }
 
-export function getSaves(userId) {
-  return axios.get(`${baseUrl}/profile/${userId}/saves`, headers())
+export function getSaves(profileId) {
+  return axios.get(`${baseUrl}/profile/${profileId}/saved/`, headers())
 }
