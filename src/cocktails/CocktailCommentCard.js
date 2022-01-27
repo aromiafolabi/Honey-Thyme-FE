@@ -7,7 +7,7 @@ function CocktailCommentCard({  content, owner, handleDelete }) {
         <div>
           <div>
             <p>
-              <strong>{owner}</strong>
+              <strong>{owner.username}</strong>
               <br />
               {content}
             </p>
