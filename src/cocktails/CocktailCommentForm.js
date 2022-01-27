@@ -1,24 +1,44 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 import { createCocktailComment } from '../lib/api'
+import { getId } from '../lib/auth'
+// import { getId } from '../lib/auth'
 
-function CocktailCommentForm({ fetchCocktail, cocktailId }) {
+function CocktailCommentForm({ fetchCocktail }) {
   const [commentValue, setCommentValue] = React.useState('')
   const [isError, setIsError] = React.useState(false)
+  const { cocktailId } = useParams()
+  const profileId = getId()
+
+  
+  const cocktailData = {
+    content: commentValue,
+    cocktail: cocktailId,
+    owner: profileId,
+  }
+  console.log(typeof(cocktailId), typeof(profileId))
+  console.log(cocktailId, profileId)
 
   const handleChange = (e) => {
     setCommentValue(e.target.value)
+    console.log(e.target.value)
+
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
-      await createCocktailComment(cocktailId, { content: commentValue })
-      setCommentValue('')
+      // const id = getId()
+      const createdComment = await createCocktailComment(cocktailId, cocktailData, { content: commentValue })
+      console.log(createdComment)
+      setCommentValue('')      
       fetchCocktail()
+
     } catch (err) {
       setIsError(true)
+
     }
   }
 

@@ -6,6 +6,7 @@ const baseUrl = '/api'
 function headers() {
   return {
     headers: { Authorization: `Bearer ${getToken()}` },
+
   }
 }
 
@@ -23,8 +24,12 @@ export function deleteCocktail(cocktailId) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}`, headers())
 }
 
-export function toggleSaves(cocktailId) {
-  return axios.post(`${baseUrl}/cocktails/${cocktailId}`, cocktailId, headers())
+export function addSaves(cocktailId, cocktailData) {
+  return axios.post(`${baseUrl}/cocktails/${cocktailId}/saved/`, cocktailData, headers())
+}
+
+export function removeSaves(cocktailId, savedId, cocktailData) {
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}`, cocktailData, headers())
 }
 
 // * LOGIN/REGISTER
@@ -54,8 +59,8 @@ export function deleteProfile(profileId) {
 
 // * COMMENT REQUESTS
 
-export function createCocktailComment(cocktailId, formData) {
-  return axios.post(`${baseUrl}/cocktails/${cocktailId}/comments`, formData, headers())
+export function createCocktailComment(cocktailId, cocktailData) {
+  return axios.post(`${baseUrl}/cocktails/${cocktailId}/comments/`, cocktailData, headers())
 }
 
 export function deleteCocktailComment(cocktailId, commentId) {

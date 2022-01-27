@@ -1,17 +1,28 @@
 import React from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { getSingleCocktail, deleteCocktailComment, deleteCocktail } from '../lib/api'
-import { isAuthenticated, isOwner } from '../lib/auth'
+import { getSingleCocktail, deleteCocktailComment, deleteCocktail, addSaves, removeSaves } from '../lib/api'
+import { isAuthenticated, isOwner, getId } from '../lib/auth'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import CocktailCommentCard from './CocktailCommentCard'
 import CocktailCommentForm from './CocktailCommentForm'
 import { Link } from 'react-router-dom'
 
+
 function CocktailShow() {
-  const { cocktailId } = useParams()
+  const { cocktailId, savedId } = useParams()
+  const profileId = getId()
+  
+
+  const cocktailData = {
+    cocktail: cocktailId,
+    owner: profileId,
+  }
+  
   const [cocktail, setCocktail] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
+  const [hasSaved, setHasSaved] = React.useState(false)
+  const [saveId, setSaveId] = React.useState(null)
   const isLoading = !cocktail && !isError
   const isLoggedIn = isAuthenticated()
   console.log(isLoggedIn)
@@ -23,12 +34,20 @@ function CocktailShow() {
         const res = await getSingleCocktail(cocktailId)
         console.log(res.data)
         setCocktail(res.data)
+        res.data.savedBy.map(saved => {
+          const ownerId = String(saved.owner.id)
+          if (ownerId === profileId){
+            setHasSaved(true)
+          }
+          console.log(saved)
+          return
+        })
       } catch (err) {
         console.log(err)
       }
     }
     getData()
-  }, [cocktailId])
+  }, [cocktailId, profileId, hasSaved])
 
   React.useEffect(() => {
     fetchCocktail()
@@ -58,6 +77,38 @@ function CocktailShow() {
     }
   }
 
+  const handleSaveClick = async (e) => {
+    e.preventDefault()
+    try {
+      const saveClick = await addSaves(cocktailId, cocktailData)
+      console.log(saveClick.data)
+      // setHasSaved(!hasSaved)
+      // if (setHasSaved(hasSaved)) {
+      //   return !hasSaved
+      // }
+    } catch (err) {
+      setIsError(true)
+    }
+  }
+
+  const handleDeleteClick = async (e) => {
+    e.preventDefault()
+    try {
+      const removeClick = await removeSaves(cocktailId, cocktailData, savedId)
+      console.log(removeClick.data)
+      removeClick.data.map(saved => {
+        const savedId = (saved.id)
+        if (savedId === profileId){
+          setHasSaved(true)
+        }
+        console.log(saved)
+        return
+      })
+    } catch (err){
+      console.log(err)
+    }
+  }
+
   return (
     <div>
       <div className="card mb-3">
@@ -71,7 +122,11 @@ function CocktailShow() {
               </div>
               <div className="col-md-6">
                 <div className="card-body">
-                  <button type="save-button" className="message-button">Save</button>
+                  {hasSaved ? 
+                    <button type="save-button" className="message-button" onClick={handleDeleteClick}>Remove Save</button>
+                    :
+                    <button type="save-button" className="message-button" onClick={handleSaveClick}>Save</button>
+                  }                 
                   <p className="card-title">{cocktail.name}</p>
                   <p className="card-text">{cocktail.about}</p>
                   <p className="card-text"><strong>Serves</strong> {cocktail.serves}</p>
@@ -146,19 +201,19 @@ function CocktailShow() {
               <div className="column">
                 {cocktail.comments.map(comment => (
                   <CocktailCommentCard
-                    key={comment._id}
+                    key={comment.id}
                     content={comment.content}
                     owner={comment.owner}
-                    handleDelete={() => handleDeleteComment(comment._id)}
+                    handleDelete={() => handleDeleteComment(comment.id)}
                   />
                 ))}
-              </div>
+              </div> 
               {isAuthenticated() && (
                 <CocktailCommentForm
                   fetchcocktail={fetchCocktail}
                   cocktailId={cocktailId}
                 />
-              )}
+              )} 
             </>
           )}
         </div>

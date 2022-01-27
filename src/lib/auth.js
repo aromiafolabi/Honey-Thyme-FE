@@ -48,6 +48,6 @@ export function setId(profileId) {
   return window.localStorage.setItem('profileId', profileId)
 }
 
-export function getId(profileId) {
-  return window.localStorage.getItem('profileId', profileId)
+export function getId() {
+  return window.localStorage.getItem('profileId')
 }
