@@ -62,11 +62,12 @@ function Profile() {
           </div>
         </div>
       </div>
+      <div className="section saved-title">
+        <p className="saved-title1">Your Saved Cocktails</p>
+      </div>
 
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div className="saved-title">
-          <p className="saved-title">Your Saved Cocktails</p>
-        </div>
+        
         <div className="line-1">
           <hr></hr>
         </div>

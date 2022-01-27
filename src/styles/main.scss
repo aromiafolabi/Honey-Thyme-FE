@@ -595,9 +595,13 @@ img.img-fluid {
 //   color: #E60023;
 // }
 
-.saved-title {
+.section {
   display: flex;
+  justify-content: center;
   margin: auto;
+}
+
+.saved-title1 {
   color: #E60023;
   font-size: 20px;
   font-family: 'Inter', sans-serif;
