@@ -48,7 +48,7 @@ export function editProfile(profileId, formData) {
 }
 
 export function deleteProfile(profileId) {
-  return axios.delete(`${baseUrl}/profile/${profileId}/`, headers())
+  return axios.delete(`${baseUrl}/profile/${profileId}/`, headers()) 
 }
 
 

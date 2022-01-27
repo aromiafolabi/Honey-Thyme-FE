@@ -25,24 +25,36 @@ function Profile() {
 
   return (
     <>
-      <h1>hi</h1>
-      <div className="profile-container">
-        {
-          (profileInfo && profileInfo.profileImage) &&
+      <div className="container mt-6">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-12">
+            <div className="card p-3 py-4">
+              <div className="text-center">
+                <div className="text-center mt-3">
+                  <div className="profile-image">
+                    {
+                      (profileInfo && profileInfo.profileImage) &&
       <img src={profileInfo.profileImage} alt="profile image" />
-        }
-        {(profileInfo && (!profileInfo.profileImage)) && 
+                    }
+                    {(profileInfo && (!profileInfo.profileImage)) && 
         <p> No profile image </p>
-        }
-        <div>
-          {profileInfo && profileInfo.fullName}
-        </div>
-        <div>
-          {profileInfo && profileInfo.username}
-        </div>
-        <div>
-          {
-            (profileInfo && (profileInfo.savedCocktail.length > 0)) && 
+                    }
+                  </div>
+                </div>
+                <h5 className="mt-2 mb-0">
+                  {profileInfo && profileInfo.fullName}
+                </h5>
+                <div className="px-4 mt-1">
+                  <p className="username">{profileInfo && profileInfo.username}</p>
+                </div>
+                <div className="buttons"> 
+                  <button className="created-button"><a className="created-button-dark">Created</a></button> 
+                  <button className="saved-button"><a className="saved-button-light">Saved</a></button> 
+                </div>
+
+                <div className="photo-list">
+                  {
+                    (profileInfo && (profileInfo.savedCocktail.length > 0)) && 
             profileInfo.savedCocktail.map(saves => (
               <CocktailCard
                 key={saves.id}
@@ -51,7 +63,11 @@ function Profile() {
                 profileid={saves.owner}
               />
             ))
-          }
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
