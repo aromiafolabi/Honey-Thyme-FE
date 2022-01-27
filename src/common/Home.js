@@ -7,33 +7,6 @@ import CocktailCard from '../cocktails/CocktailCard'
 
 function Home() {
 
-  // const homePhotos = [
-  //   {
-  //     imageUrl: 'https://i.imgur.com/NOiatHs.jpg',
-  //   },
-  //   {
-  //     imageUrl: 'https://i.imgur.com/WwvPDmV.jpg',
-  //   },
-  //   {
-  //     imageUrl: 'https://i.imgur.com/QdcA1ZL.jpg',
-  //   },
-  //   {
-  //     imageUrl: 'https://i.imgur.com/9Y0dbH0.jpg',
-  //   },
-  //   {
-  //     imageUrl: 'https://i.imgur.com/TeJ0975.jpg',
-  //   }
-  // ]
-  // // const masonryOptions = {
-  // //   transitionDuration: 0,
-  // // }
-  // const masonryOptions = {
-  //   fitWidth: false,
-  //   columnWidth: 200,
-  //   gutter: 30,
-  //   itemSelector: '.photo-item',
-  // }
-
 
   const [allCocktails, setAllCocktails] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
@@ -66,6 +39,7 @@ function Home() {
     <>
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
+
           <div className="landing">
             <h1 className="landing-title text-center">
               <span className="title-word title-word-1">Honey</span>
@@ -79,6 +53,7 @@ function Home() {
               <span className="title-word title-word-3">.</span>
             </h2>
           </div>
+
         </div>
       </div>
       <Masonry 
@@ -102,21 +77,6 @@ function Home() {
         ))
         } 
       </Masonry>
-      {/* <Masonry
-        className={'photo-list'}
-        elementType={'ul'}
-        options={masonryOptions}
-        disableImagesLoaded={false}
-        updateOnEachImageLoad={false}
-      >
-        {isError && <Error />}
-        {isLoading && <Loading />}
-        {homePhotos.map((photo) => (
-          <li className={'photo-item'} key={photo}>
-            <img src={photo.imageUrl} alt={photo} className="photo"/>
-          </li>
-        ))}
-      </Masonry> */}
     </>
   )
 

@@ -11,7 +11,7 @@ import arrow from '../assets/arrow.png'
 
 
 function CocktailShow() {
-  const { cocktailId, savedId } = useParams()
+  const { cocktailId } = useParams()
   const profileId = getId()
   
 
@@ -82,11 +82,9 @@ function CocktailShow() {
     e.preventDefault()
     try {
       const saveClick = await addSaves(cocktailId, cocktailData)
-      console.log(saveClick.data)
-      // setHasSaved(!hasSaved)
-      // if (setHasSaved(hasSaved)) {
-      //   return !hasSaved
-      // }
+      console.log('hi', saveClick.data.id)
+      setSaveId(saveClick.data.id)
+      setHasSaved(true)
     } catch (err) {
       setIsError(true)
     }
@@ -95,16 +93,9 @@ function CocktailShow() {
   const handleDeleteClick = async (e) => {
     e.preventDefault()
     try {
-      const removeClick = await removeSaves(cocktailId, cocktailData, savedId)
+      const removeClick = await removeSaves(cocktailId, saveId, cocktailData)
       console.log(removeClick.data)
-      removeClick.data.map(saved => {
-        const savedId = (saved.id)
-        if (savedId === profileId){
-          setHasSaved(true)
-        }
-        console.log(saved)
-        return
-      })
+      setHasSaved(false)
     } catch (err){
       console.log(err)
     }
@@ -214,12 +205,14 @@ function CocktailShow() {
                     owner={comment.owner}
                     handleDelete={() => handleDeleteComment(comment.id)}
                   />
+                  
                 ))}
               </div> 
               {isAuthenticated() && (
                 <CocktailCommentForm
                   fetchcocktail={fetchCocktail}
                   cocktailId={cocktailId}
+                  setCocktail={setCocktail}
                 />
               )} 
             </>
