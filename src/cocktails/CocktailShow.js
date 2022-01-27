@@ -7,6 +7,7 @@ import Loading from '../common/Loading'
 import CocktailCommentCard from './CocktailCommentCard'
 import CocktailCommentForm from './CocktailCommentForm'
 import { Link } from 'react-router-dom'
+import arrow from '../assets/arrow.png'
 
 
 function CocktailShow() {
@@ -199,6 +200,13 @@ function CocktailShow() {
               )}
 
               <div className="column">
+
+                <div className="comments-area">
+                  <div className="comments">
+                    <h2 className="comments-title">Comments <img src={arrow} className="arrow"></img></h2>
+                  </div>
+                </div>
+
                 {cocktail.comments.map(comment => (
                   <CocktailCommentCard
                     key={comment.id}

@@ -28,7 +28,6 @@ function CocktailCommentForm({ fetchCocktail }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     try {
       // const id = getId()
       const createdComment = await createCocktailComment(cocktailId, cocktailData, { content: commentValue })
@@ -44,25 +43,17 @@ function CocktailCommentForm({ fetchCocktail }) {
 
   return (
     <div className="message-area">
-
       <form  onSubmit={handleSubmit}>
-
         <div className="field">
-
           <div className="control1">
             <textarea className="textarea border" name="content" onChange={handleChange} value={commentValue}/>
           </div>
-
           <div className="control2">
-            <button type="login-button" className="message-button">Send</button>
+            <button type="login-button" className="message-button">Comment</button>
           </div>
-
           {isError && <p className="help is-danger">Please write a comment and try again!</p>}
-      
         </div>
-
       </form>
-
     </div>
   )
 

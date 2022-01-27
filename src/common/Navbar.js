@@ -3,66 +3,23 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 import React from 'react'
 import { isAuthenticated, removeToken } from '../lib/auth'
-import CocktailCard from '../cocktails/CocktailCard'
-import { getAllCocktails } from '../lib/api'
+
+
 
 
 function Navbar() {
-
-  const [searchedValue, setSearchedValue] = React.useState('')
-  const [cocktails, setCocktails] = React.useState(null)
   const isAuth = isAuthenticated()
   const navigate = useNavigate()
- 
+
   const handleLogout = () => {
     removeToken()
     navigate('/')
-  }
-  // React.useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const res = await getAllCocktails()
-  //       console.log(res.data)
-  //       setCocktails(res.data)
-  //     } catch (err) {
-  //       console.log(err)
-  //       console.log(err)
-  //     }
-  //   }
-  //   getData()
-  // }, [])
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    setSearchedValue(e.target.value)
-  }
-  console.log(searchedValue)
-  const filteredCocktails = (cocktails) => {
-    return cocktails.filter(cocktail => {
-      return cocktail.name.toLowerCase().includes(searchedValue.toLowerCase())
-    })
   }
 
   return (
     <>
       <nav className="nav nav-toggle">
         <Link to="/"><img src={logo} className="logo"></img></Link>
-        <input 
-          className="Search-bar" 
-          type="search" 
-          placeholder="Search cocktails..." 
-          onChange={handleSearch}/>
-        {cocktails && 
-        filteredCocktails(cocktails).map(cocktail => (
-          <CocktailCard
-            key={cocktail.id}
-            image={cocktail.image}
-            name={cocktail.name}
-            cocktailId={cocktail.id}
-          />
-        ))
-        }
-        {/* <input type="search" className="search form-control rounded" placeholder="Search" aria-label="Search" onChange={handleSearch}/> */}
         <div className="nav-buttons">
           {isAuth ? (
             <>
@@ -84,6 +41,3 @@ function Navbar() {
 }
 
 export default Navbar
-
-
-
