@@ -12,6 +12,7 @@ function CocktailIndex() {
   const [isError, setIsError] = React.useState(false)
   const [searchedValue, setSearchedValue] = React.useState('')
   const isLoading = !allCocktails && !isError
+  const [searchedValue, setSearchedValue] = React.useState('')
 
   React.useEffect(() => {
     const getData = async () => {
@@ -57,8 +58,8 @@ function CocktailIndex() {
           placeholder="Search cocktails..." 
           onChange={handleSearch}/>
       </div>
-    
   
+
       <div>
         <Masonry 
           className={'photo-list'}
@@ -70,15 +71,15 @@ function CocktailIndex() {
           {isError && <Error />}
           {isLoading && <Loading />}
           {allCocktails &&
-          filteredCocktails(allCocktails).map(cocktail => (
-            <li className={'photo-item'} key={cocktail.id}>
-              <CocktailCard
-                key={cocktail.id}
-                image={cocktail.image}
-                cocktailId={cocktail.id}
-              />
-            </li>
-          ))
+        filteredCocktails(allCocktails).map(cocktail => (
+          <li className={'photo-item'} key={cocktail.id}>
+            <CocktailCard
+              key={cocktail.id}
+              image={cocktail.image}
+              cocktailId={cocktail.id}
+            />
+          </li>
+        ))
           } 
         </Masonry>
       </div>

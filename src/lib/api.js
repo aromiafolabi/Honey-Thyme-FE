@@ -28,8 +28,13 @@ export function addSaves(cocktailId, cocktailData) {
   return axios.post(`${baseUrl}/cocktails/${cocktailId}/saved/`, cocktailData, headers())
 }
 
+<<<<<<< HEAD
 export function removeSaves(cocktailId, saveId, cocktailData) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${saveId}`,headers(), cocktailData)
+=======
+export function removeSaves(cocktailId, savedId, cocktailData) {
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}`, headers(), cocktailData)
+>>>>>>> development
 }
 
 // * LOGIN/REGISTER
@@ -53,7 +58,7 @@ export function editProfile(profileId, formData) {
 }
 
 export function deleteProfile(profileId) {
-  return axios.delete(`${baseUrl}/profile/${profileId}/`, headers())
+  return axios.delete(`${baseUrl}/profile/${profileId}/`, headers()) 
 }
 
 
@@ -70,4 +75,3 @@ export function deleteCocktailComment(cocktailId, commentId) {
 export function getProfileInfo(profileId) {
   return axios.get(`${baseUrl}/profile/${profileId}/`, headers())
 }
-

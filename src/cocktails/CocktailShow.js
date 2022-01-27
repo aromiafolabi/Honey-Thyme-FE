@@ -14,7 +14,6 @@ function CocktailShow() {
   const { cocktailId } = useParams()
   const profileId = getId()
   
-
   const cocktailData = {
     cocktail: cocktailId,
     owner: profileId,
@@ -27,7 +26,6 @@ function CocktailShow() {
   const isLoading = !cocktail && !isError
   const isLoggedIn = isAuthenticated()
   console.log(isLoggedIn)
-  //console.log(cocktailId)
 
   const fetchCocktail = React.useCallback(() => {
     const getData = async () => {
@@ -103,6 +101,7 @@ function CocktailShow() {
 
   return (
     <div>
+      <button type="button" className="white-button"><a href="/cocktails" className="white-button-light">Back</a></button>
       <div className="card mb-3">
         <div className="row g-0">
           {isError && <Error />}
@@ -226,4 +225,3 @@ function CocktailShow() {
 
 export default CocktailShow
 
-// 

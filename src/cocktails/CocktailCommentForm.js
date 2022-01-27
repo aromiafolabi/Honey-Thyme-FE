@@ -1,9 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
 import { createCocktailComment, getSingleCocktail } from '../lib/api'
 import { getId } from '../lib/auth'
-// import { getId } from '../lib/auth'
 
 function CocktailCommentForm({ fetchCocktail, setCocktail }) {
   const [commentValue, setCommentValue] = React.useState('')
@@ -35,7 +33,6 @@ function CocktailCommentForm({ fetchCocktail, setCocktail }) {
       setCocktail(cocktailWithComment.data)
       setCommentValue('')      
       fetchCocktail()
-
     } catch (err) {
       setIsError(true)
 
