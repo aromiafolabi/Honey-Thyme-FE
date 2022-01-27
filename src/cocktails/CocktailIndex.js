@@ -12,7 +12,6 @@ function CocktailIndex() {
   const [isError, setIsError] = React.useState(false)
   const [searchedValue, setSearchedValue] = React.useState('')
   const isLoading = !allCocktails && !isError
-  const [searchedValue, setSearchedValue] = React.useState('')
 
   React.useEffect(() => {
     const getData = async () => {

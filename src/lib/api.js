@@ -28,13 +28,8 @@ export function addSaves(cocktailId, cocktailData) {
   return axios.post(`${baseUrl}/cocktails/${cocktailId}/saved/`, cocktailData, headers())
 }
 
-<<<<<<< HEAD
-export function removeSaves(cocktailId, saveId, cocktailData) {
-  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${saveId}`,headers(), cocktailData)
-=======
 export function removeSaves(cocktailId, savedId, cocktailData) {
   return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}`, headers(), cocktailData)
->>>>>>> development
 }
 
 // * LOGIN/REGISTER
