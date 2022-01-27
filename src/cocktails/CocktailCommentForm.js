@@ -1,11 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
-import { createCocktailComment } from '../lib/api'
+import { createCocktailComment, getSingleCocktail } from '../lib/api'
 import { getId } from '../lib/auth'
-// import { getId } from '../lib/auth'
 
-function CocktailCommentForm({ fetchCocktail }) {
+function CocktailCommentForm({ fetchCocktail, setCocktail }) {
   const [commentValue, setCommentValue] = React.useState('')
   const [isError, setIsError] = React.useState(false)
   const { cocktailId } = useParams()
@@ -30,11 +28,11 @@ function CocktailCommentForm({ fetchCocktail }) {
     e.preventDefault()
     try {
       // const id = getId()
-      const createdComment = await createCocktailComment(cocktailId, cocktailData, { content: commentValue })
-      console.log(createdComment)
+      await createCocktailComment(cocktailId, cocktailData, { content: commentValue })
+      const cocktailWithComment = await getSingleCocktail(cocktailId)
+      setCocktail(cocktailWithComment.data)
       setCommentValue('')      
       fetchCocktail()
-
     } catch (err) {
       setIsError(true)
 
@@ -51,7 +49,7 @@ function CocktailCommentForm({ fetchCocktail }) {
           <div className="control2">
             <button type="login-button" className="message-button">Comment</button>
           </div>
-          {isError && <p className="help is-danger">Please write a comment and try again!</p>}
+          {/* {isError && <p className="help is-danger">Please write a comment and try again!</p>} */}
         </div>
       </form>
     </div>

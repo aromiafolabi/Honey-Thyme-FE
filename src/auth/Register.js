@@ -2,6 +2,8 @@ import React from 'react'
 import { registerUser } from '../lib/api'
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
+import axios from 'axios'
+import Loading from '../common/Loading'
 
 const initialState = {
   username: '',
@@ -14,6 +16,7 @@ const initialState = {
 function Register() {
   const navigate = useNavigate()
   const [formData, setFormData] = React.useState(initialState)
+  const [isUploadingImage, setIsUploadingImage] = React.useState(false)
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -30,6 +33,18 @@ function Register() {
   }
 
   console.log(formData)
+
+  const handleImageUpload = async (e) => {
+    const data = new FormData()
+    data.append('file', e.target.files[0])
+    data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
+    setIsUploadingImage(true)
+    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
+    setFormData({ ...formData, profileImage: res.data.url })
+    console.log(res.data.url)
+    setIsUploadingImage(false)
+  }
+
 
   return (
     <div className="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -59,12 +74,14 @@ function Register() {
                   </div>
 
                   <div className="form-outline mb-2">
+                    {isUploadingImage && <Loading />} 
                     <input 
-                      type="text"
+                      type="file"
                       name="profileImage"
                       id="form3Example3cg" 
+                      accept="image/png, image/jpg"
                       className="form-control form-control-lg" 
-                      onChange={handleChange}/>
+                      onChange={handleImageUpload}/>
                     <label className="form-label" >Profile Image</label>
                   </div>
 
@@ -116,56 +133,3 @@ function Register() {
 }
 
 export default Register
-
-
-
-// <div className="card text-center" id="register-card">
-//       <div className="register-header">
-//         <img src={logo} className="register-logo"></img>
-//         <h5 className="register-title">
-//         Welcome to Honey &#38; Thyme
-//         </h5>
-//         <p className="register-subtitle">Find new cocktails to try</p>
-//         <form className="register-text" onSubmit={handleSubmit}>
-//           <div className="form-group">
-//             <input className="regInput"
-//               placeholder='First Name'
-//               name='first name'
-//               onChange={handleChange}
-//             />
-//             <input
-//               placeholder='Last Name'
-//               name='last name'
-//               onChange={handleChange}
-//             />
-//             <input
-//               placeholder='Email'
-//               name='email'
-//               onChange={handleChange}
-//             />
-//             <input
-//               placeholder='Username'
-//               name='username'
-//               onChange={handleChange}
-//             />
-//             <input
-//               placeholder='Password'
-//               type="password"
-//               name='password'
-//               onChange={handleChange}
-//             /> 
-//             <input
-//               placeholder='Confirm password'
-//               type="password"
-//               name='passwordConfirmation'
-//               onChange={handleChange}
-//             />
-//             <button className="register btn btn-primary" type='submit' id="reg">Register</button>
-//           </div>
-//         </form>
-//         <div className="form-bottom">
-//           <p>Already a member?</p>
-//           <a href="/login" className="login btn btn-primary" id="log">Login</a>
-//         </div>
-//       </div>
-//     </div>

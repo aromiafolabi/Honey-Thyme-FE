@@ -29,7 +29,7 @@ export function addSaves(cocktailId, cocktailData) {
 }
 
 export function removeSaves(cocktailId, savedId, cocktailData) {
-  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}`, cocktailData, headers())
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}`, headers(), cocktailData)
 }
 
 // * LOGIN/REGISTER
@@ -69,8 +69,4 @@ export function deleteCocktailComment(cocktailId, commentId) {
 
 export function getProfileInfo(profileId) {
   return axios.get(`${baseUrl}/profile/${profileId}/`, headers())
-}
-
-export function getSaves(profileId) {
-  return axios.get(`${baseUrl}/profile/${profileId}/saved/`, headers())
 }

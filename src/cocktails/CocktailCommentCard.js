@@ -11,7 +11,7 @@ function CocktailCommentCard({  content, owner, handleDelete }) {
               <br />
               {content}
             </p>
-            {isOwner(owner) &&
+            {isOwner(owner.id) &&
               <button onClick={handleDelete}>X</button>}
           </div>
         </div>

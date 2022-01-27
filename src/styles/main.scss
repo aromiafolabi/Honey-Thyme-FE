@@ -51,18 +51,19 @@
   display: flex;
   justify-content: center;
   margin: auto;
+
 }
 
-.example input[type=text]{
+.example{
   padding: 10px 10px 10px 15px;
   font-size: 17px;
-  float: left;
   width: 700px;
-  margin: auto;
   background-color: #F9F6EE;
   border-radius: 25px;
-  margin-left: 20px;
   border: none;
+  width: 700px;
+  margin-top: 20px;
+  // margin-top: -90px;
 }
 
 
@@ -218,6 +219,26 @@
   --color-1: #ACCFCB;
   --color-2: #E4A9A8;
   --color-3: #ACCFCB;
+}
+
+.title-word-4 {
+  color: #DBAD4A;
+  text-decoration: none;
+}
+
+.title-word-5 {
+  color: #E4A9A8;
+  text-decoration: none;
+}
+
+.title-word-6 {
+  color: #3D8DAE;
+  text-decoration: none;
+}
+
+.brand-name {
+  margin-left: 15px;
+  text-decoration: none;
 }
 
 @keyframes color-animation {
@@ -500,24 +521,17 @@ img.img-fluid {
   height: 100%;
 }
 
-.profile-image {
-  // height: 70px;
-  // margin-top: 50px;
-    position: absolute;
-    top: -50px;
-    left: 38%;
+.rounded-circle {
+    margin-top: 50px;
+    // position: absolute;
     height: 90px;
     width: 90px;
-    border: 3px solid #fff;
     border-radius: 50%
 }
 
-h5 {
-  font-size: 20px;
-}
-
 .username {
-  font-size: 15px
+  font-size: 40px;
+  margin-top: 20px;
 }
 
 .social-list {
@@ -557,26 +571,57 @@ h5 {
   color: white;
 }
 
-.saved-button {
-  background-color: #F9F6EE;
-  margin-left: 9px;
-  padding: 10px 17px;
-  border-radius: 40px;
-  border: none;
-}
+// .saved-button {
+//   background-color: #F9F6EE;
+//   margin-left: 9px;
+//   padding: 10px 17px;
+//   border-radius: 40px;
+//   border: none;
+// }
 
-.saved-button:hover {
-  background-color: #EDEADE;
-  color: #C41E3A;
-}
+// .saved-button:hover {
+//   background-color: #EDEADE;
+//   color: #C41E3A;
+// }
 
-.saved-button-light {
-  text-decoration: none;
-  font-size: 15px;
+// .saved-button-light {
+//   text-decoration: none;
+//   font-size: 15px;
+//   color: #E60023;
+//   letter-spacing: 1px;
+// }
+
+// .saved-button-light:hover {
+//   color: #E60023;
+// }
+
+.saved-title {
+  display: flex;
+  margin: auto;
   color: #E60023;
-  letter-spacing: 1px;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
 
-.saved-button-light:hover {
-  color: #E60023;
+
+.mask {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
 }
+
+.photo-cards {
+  margin: auto;
+}
+
+.photo-list-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+
+

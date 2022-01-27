@@ -11,10 +11,9 @@ import arrow from '../assets/arrow.png'
 
 
 function CocktailShow() {
-  const { cocktailId, savedId } = useParams()
+  const { cocktailId } = useParams()
   const profileId = getId()
   
-
   const cocktailData = {
     cocktail: cocktailId,
     owner: profileId,
@@ -27,7 +26,6 @@ function CocktailShow() {
   const isLoading = !cocktail && !isError
   const isLoggedIn = isAuthenticated()
   console.log(isLoggedIn)
-  //console.log(cocktailId)
 
   const fetchCocktail = React.useCallback(() => {
     const getData = async () => {
@@ -82,11 +80,9 @@ function CocktailShow() {
     e.preventDefault()
     try {
       const saveClick = await addSaves(cocktailId, cocktailData)
-      console.log(saveClick.data)
-      // setHasSaved(!hasSaved)
-      // if (setHasSaved(hasSaved)) {
-      //   return !hasSaved
-      // }
+      console.log('hi', saveClick.data.id)
+      setSaveId(saveClick.data.id)
+      setHasSaved(true)
     } catch (err) {
       setIsError(true)
     }
@@ -95,16 +91,9 @@ function CocktailShow() {
   const handleDeleteClick = async (e) => {
     e.preventDefault()
     try {
-      const removeClick = await removeSaves(cocktailId, cocktailData, savedId)
+      const removeClick = await removeSaves(cocktailId, saveId, cocktailData)
       console.log(removeClick.data)
-      removeClick.data.map(saved => {
-        const savedId = (saved.id)
-        if (savedId === profileId){
-          setHasSaved(true)
-        }
-        console.log(saved)
-        return
-      })
+      setHasSaved(false)
     } catch (err){
       console.log(err)
     }
@@ -112,6 +101,7 @@ function CocktailShow() {
 
   return (
     <div>
+      <button type="button" className="white-button"><a href="/cocktails" className="white-button-light">Back</a></button>
       <div className="card mb-3">
         <div className="row g-0">
           {isError && <Error />}
@@ -220,6 +210,7 @@ function CocktailShow() {
                 <CocktailCommentForm
                   fetchcocktail={fetchCocktail}
                   cocktailId={cocktailId}
+                  setCocktail={setCocktail}
                 />
               )} 
             </>

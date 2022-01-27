@@ -5,8 +5,6 @@ import React from 'react'
 import { isAuthenticated, removeToken } from '../lib/auth'
 
 
-
-
 function Navbar() {
   const isAuth = isAuthenticated()
   const navigate = useNavigate()
@@ -20,6 +18,11 @@ function Navbar() {
     <>
       <nav className="nav nav-toggle">
         <Link to="/"><img src={logo} className="logo"></img></Link>
+        <Link to="/" className="brand-name">
+          <span className="title-word-4">Honey</span>
+          <span className="title-word-5">&#38;</span> 
+          <span className="title-word-6">Thyme</span>
+        </Link>
         <div className="nav-buttons">
           {isAuth ? (
             <>
