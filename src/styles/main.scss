@@ -45,6 +45,52 @@
   font-size: 17px;
 }
 
+.burger-toggle {
+  display: none;
+  @media only screen and (max-width: 600px){
+    display: inline-flex;
+  }
+}
+
+.burger-icon {
+  color: #E60023;
+  margin-left: 70%;
+  margin-top: -60px;
+}
+
+.side-nav-menu-container {
+  width: 200px;
+  background-color: white;
+  height: 150px;
+  position: fixed;
+  z-index: 2;
+  right: -100%;
+  padding: 20px 30px;
+  border-radius: 0 0 0 20px;
+  margin-top: 200px;
+}
+
+.side-nav-menu-container.active {
+  right: 0;
+  transition: all 0.4s;
+}
+
+
+.auth-burger {
+  margin-top: 60px;
+}
+
+.li-buttons {
+  list-style: none;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.li-hrefs {
+  text-decoration: none;
+  color: #E60023;
+}
+
 // * NAVBAR SEARCH
 
 .bar {
