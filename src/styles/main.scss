@@ -241,6 +241,23 @@
   text-decoration: none;
 }
 
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
+}
+
+// * POPUP
+
+.popup-home {
+  // transition: all 0.5s ease;
+  transition-duration: 2s;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -250,6 +267,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  // transition: all 1s ease;
+  transition-duration: 2s;
 }
 
 .popup-inner {
@@ -258,28 +277,82 @@
   width: 100%;
   display: block;
   justify-content: center;
-  // max-width: 640px;
+  max-width: 640px;
 }
-.popup-inner .close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+
+// .popup-inner .close-btn {
+//   position: absolute;
+//   top: 16px;
+//   right: 16px;
+// }
+
+.close-btn-area {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 10px 0 0;
+}
+
+.close {
+  position: relative;
+  font-size: 20px;
+  opacity: 0.5;
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+}
+
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }
 
 .popup-btns-container {
   display: flex;
   justify-content: center;
+  margin: 30px;
 }
 
+.popup-card {
+  margin-top: 170px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  opacity: 0.95;
+}
 
-@keyframes color-animation {
-  0%    {color: var(--color-1)}
-  32%   {color: var(--color-1)}
-  33%   {color: var(--color-2)}
-  65%   {color: var(--color-2)}
-  66%   {color: var(--color-3)}
-  99%   {color: var(--color-3)}
-  100%  {color: var(--color-1)}
+.card-header {
+  margin: 30px;
+  background-color: white;
+  font-size: 20px;
+}
+
+.popup-header {
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  margin: 0 20px 30px 20px;
+}
+
+.popup-card-title{
+  margin: 20px 20px 40px 20px;
+}
+
+.find-here {
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 // * REGISTER PAGE
@@ -296,6 +369,7 @@
 
 .center {
   margin: auto;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -307,7 +381,6 @@
 
 .register-logo {
   height: 80px;
-  margin-left: 130px;
 }
 
 .register-subtitle {
@@ -711,18 +784,15 @@ img.img-fluid {
 .right {
   display: flex;
   justify-content: flex-end;
-  margin-right: 50px;
+  margin-right: 33px;
   margin-bottom: 15px;
   margin-top: 15px;
 }
 
 .senderBubble {
-  max-width: 250px;
-  // margin: 5px;
+  max-width: 300px;
   text-align: left;
-  width: 60%;
-  // background-color: #F9F6EE;
-  margin-left: 9px;
+  width: 100%;
   border-radius: 20px;
   border: 1px solid #D8D8D8;
   font-size: 14px;
@@ -736,23 +806,34 @@ img.img-fluid {
 }
 
 .sender {
-  color: black;
-  padding-left: 15px;
-  padding-top: 15px;
+  padding-left: 10px;
+  padding-top: 10px;
   word-break: break-word;
+  height: 30px;
+	line-height: 25px;
+	font-size: 16px;
+  border-radius: 15px;
+  width: 300px;
+  border-color: var(--color-1);
+  resize: none;
 }
 
 .delete-div {
   text-align: right;
+  margin-bottom: 5px;
 }
 
 .delete {
-  border-radius: 50%;
-  border: 1px solid #EDEADE;
-  color: black;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 0px 8px 3px 8px;
+  margin-right: 10px;
+  margin-bottom: 13px;
+  padding-bottom: 10px;
+  // padding: 0px 8px 8px 8px;
+  position: relative;
+  font-size: 20px;
+  opacity: 0.5;
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
 }
 
 

@@ -5,6 +5,7 @@ import Error from '../common/Error'
 import Loading from '../common/Loading'
 import CocktailCard from '../cocktails/CocktailCard'
 import PopUp from './PopUp'
+import { isAuthenticated } from '../lib/auth'
 
 function Home() {
 
@@ -32,7 +33,7 @@ function Home() {
   React.useEffect(() => {
     setTimeout(() => {
       setTimedPopUp((true))
-    }, 6000)
+    }, 2000)
   }, [])
 
   const masonryOptions = {
@@ -83,9 +84,15 @@ function Home() {
         ))
         }        
       </Masonry>
-      <PopUp trigger={timedPopUp} setTrigger={setTimedPopUp}>
-        <h3>my pop up</h3>
-      </PopUp>
+
+      {/* {!isAuthenticated ?  */}
+      <PopUp trigger={timedPopUp} setTrigger={setTimedPopUp} className="popup-home">
+      </PopUp> 
+      {/* : */}
+      {/* //   <PopUp trigger={timedPopUp} setTrigger={setTimedPopUp} className="popup-none"></PopUp> */}
+      {/* } */}
+  
+
     </>
   )
 
