@@ -4,13 +4,16 @@ import { getAllCocktails } from '../lib/api'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import CocktailCard from '../cocktails/CocktailCard'
+import PopUp from './PopUp'
 
 function Home() {
 
 
   const [allCocktails, setAllCocktails] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
+  const [timedPopUp, setTimedPopUp] = React.useState(false)
   const isLoading = !allCocktails && !isError
+  
 
   React.useEffect(() => {
     const getData = async () => {
@@ -25,8 +28,12 @@ function Home() {
     }
     getData()
   }, [])
-
-  console.log(allCocktails)
+  
+  React.useEffect(() => {
+    setTimeout(() => {
+      setTimedPopUp((true))
+    }, 6000)
+  }, [])
 
   const masonryOptions = {
     fitWidth: false,
@@ -39,7 +46,6 @@ function Home() {
     <>
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
-
           <div className="landing">
             <h1 className="landing-title text-center">
               <span className="title-word title-word-1">Honey</span>
@@ -53,7 +59,6 @@ function Home() {
               <span className="title-word title-word-3">.</span>
             </h2>
           </div>
-
         </div>
       </div>
       <Masonry 
@@ -75,8 +80,11 @@ function Home() {
             />
           </li>
         ))
-        } 
+        }        
       </Masonry>
+      <PopUp trigger={timedPopUp} setTrigger={setTimedPopUp}>
+        <h3>my pop up</h3>
+      </PopUp>
     </>
   )
 
