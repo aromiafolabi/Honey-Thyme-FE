@@ -101,7 +101,13 @@ function CocktailShow() {
 
   return (
     <div>
-      <button type="button" className="white-button"><a href="/cocktails" className="white-button-light">Back</a></button>
+
+      <div className="back-button-area">
+        <button type="button" className="back-button">
+          <a href="javascript:window.history.back();" className="back-button-light">Back</a>
+        </button>
+      </div>
+
       <div className="card mb-3">
         <div className="row g-0">
           {isError && <Error />}
@@ -113,11 +119,13 @@ function CocktailShow() {
               </div>
               <div className="col-md-6">
                 <div className="card-body">
-                  {hasSaved ? 
-                    <button type="save-button" className="message-button" onClick={handleDeleteClick}>Remove Save</button>
-                    :
-                    <button type="save-button" className="message-button" onClick={handleSaveClick}>Save</button>
-                  }                 
+                  <div className="save-button-area">
+                    {hasSaved ? 
+                      <button type="save-button" className="message-button" onClick={handleDeleteClick}>Remove Save</button>
+                      :
+                      <button type="save-button" className="message-button" onClick={handleSaveClick}>Save</button>
+                    }  
+                  </div>               
                   <p className="card-title">{cocktail.name}</p>
                   <p className="card-text">{cocktail.about}</p>
                   <p className="card-text"><strong>Serves</strong> {cocktail.serves}</p>

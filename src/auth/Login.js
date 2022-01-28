@@ -45,50 +45,51 @@ function Login() {
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-7">
-            <div className="card">
+            <div className="login-register-card">
+              <div className="card">
               
-              <div className="card-body p-5">
-                <div className="center">
-                  <img src={logo} className="register-logo"></img>
-                </div>
-                <h5 className="login-title text-center">
+                <div className="card-body p-5">
+                  <div className="center">
+                    <img src={logo} className="register-logo"></img>
+                  </div>
+                  <h5 className="login-title text-center">
                     Welcome Back
-                </h5>
+                  </h5>
 
-                <form onSubmit={handleSubmit}>
-                  <div className="form-outline mb-2">
-                    <input 
-                      type="username" 
-                      name="username"
-                      id="form3Example3cg" 
-                      className="form-control form-control-lg" 
-                      onChange={handleChange}/>
-                    <label className="form-label" >Username</label>
-                  </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-outline mb-2">
+                      <input 
+                        type="username" 
+                        name="username"
+                        id="form3Example3cg" 
+                        className="form-control form-control-lg" 
+                        onChange={handleChange}/>
+                      <label className="form-label" >Username</label>
+                    </div>
 
           
-                  <div className="form-outline mb-2">
-                    <input 
-                      type="password" 
-                      name="password"
-                      id="form3Example4cg" 
-                      className="form-control form-control-lg" 
-                      onChange={handleChange}/>
-                    <label className="form-label" >Password</label>
-                  </div>
+                    <div className="form-outline mb-2">
+                      <input 
+                        type="password" 
+                        name="password"
+                        id="form3Example4cg" 
+                        className="form-control form-control-lg" 
+                        onChange={handleChange}/>
+                      <label className="form-label" >Password</label>
+                    </div>
 
-                  {isError && (
-                    <p>Password or Email were incorrect.</p>
-                  )}
+                    {isError && (
+                      <p>Password or Email were incorrect.</p>
+                    )}
 
-                  <div className="d-flex justify-content-center">
-                    <button type="submit" className="red-button">Login</button>
-                  </div>
+                    <div className="d-flex justify-content-center">
+                      <button type="submit" className="red-button">Login</button>
+                    </div>
           
-                  <p className="text-center mt-5 mb-0 already">Not a member yet? <button type="button" className="white-button"><a href="/register" className="white-button-light">Register</a></button></p>
-                </form>
+                    <p className="text-center mt-5 mb-0 already">Not a member yet? <button type="button" className="white-button"><a href="/register" className="white-button-light">Register</a></button></p>
+                  </form>
+                </div>
               </div>
-
             </div>
           </div>
         </div>

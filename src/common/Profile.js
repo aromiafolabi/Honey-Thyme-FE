@@ -34,6 +34,11 @@ function Profile() {
   return (
     <>
       <div>
+        <div className="back-button-area">
+          <button type="button" className="back-button">
+            <a href="javascript:window.history.back();" className="back-button-light">Back</a>
+          </button>
+        </div>
         <div className="container mt-6">
           <div className="row d-flex justify-content-center">
             <div className="col-md-12">
@@ -52,6 +57,9 @@ function Profile() {
                   <div className="px-4 mt-1">
                     <h5 className="username">{profileInfo && profileInfo.username}</h5>
                   </div>
+                  <div className="hr-div">
+                    <hr className="hr"></hr> 
+                  </div>
                   {/* <div className="buttons"> 
                     <button className="created-button"><a className="created-button-dark">Created</a></button> 
                     <button className="saved-button"><a className="saved-button-light">Saved</a></button> 
@@ -62,11 +70,12 @@ function Profile() {
           </div>
         </div>
       </div>
+      <div className="section saved-title">
+        <p className="saved-title1">Your Saved Cocktails</p>
+      </div>
 
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div className="saved-title">
-          <p className="saved-title">Your Saved Cocktails</p>
-        </div>
+        
         <div className="line-1">
           <hr></hr>
         </div>
