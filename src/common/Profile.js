@@ -34,6 +34,11 @@ function Profile() {
   return (
     <>
       <div>
+        <div className="back-button-area">
+          <button type="button" className="back-button">
+            <a href="javascript:window.history.back();" className="back-button-light">Back</a>
+          </button>
+        </div>
         <div className="container mt-6">
           <div className="row d-flex justify-content-center">
             <div className="col-md-12">
@@ -51,6 +56,9 @@ function Profile() {
                   </div>
                   <div className="px-4 mt-1">
                     <h5 className="username">{profileInfo && profileInfo.username}</h5>
+                  </div>
+                  <div className="hr-div">
+                    <hr className="hr"></hr> 
                   </div>
                   {/* <div className="buttons"> 
                     <button className="created-button"><a className="created-button-dark">Created</a></button> 

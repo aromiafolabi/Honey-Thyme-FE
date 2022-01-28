@@ -56,6 +56,7 @@ function Home() {
 
         </div>
       </div>
+      
       <Masonry 
         className={'photo-list-1'}
         elementType={'ul'}
