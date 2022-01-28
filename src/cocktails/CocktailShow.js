@@ -212,6 +212,7 @@ function CocktailShow() {
                     owner={comment.owner}
                     handleDelete={() => handleDeleteComment(comment.id)}
                   />
+                  
                 ))}
               </div> 
               {isAuthenticated() && (

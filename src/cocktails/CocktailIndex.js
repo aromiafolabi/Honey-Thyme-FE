@@ -10,8 +10,8 @@ function CocktailIndex() {
 
   const [allCocktails, setAllCocktails] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
-  const isLoading = !allCocktails && !isError
   const [searchedValue, setSearchedValue] = React.useState('')
+  const isLoading = !allCocktails && !isError
 
   React.useEffect(() => {
     const getData = async () => {
@@ -35,7 +35,6 @@ function CocktailIndex() {
     gutter: 30,
     itemSelector: '.photo-item',
   }
-
   const handleSearch = (e) => {
     e.preventDefault()
     setSearchedValue(e.target.value)
@@ -48,6 +47,7 @@ function CocktailIndex() {
     })
   }
 
+  
   return (
     <>
       <div className="bar">
