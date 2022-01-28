@@ -1,13 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom'
-// import Hamburger from 'hamburger-react'
+import Hamburger from 'hamburger-react'
 import logo from '../assets/logo.jpg'
 import React from 'react'
 import { isAuthenticated, removeToken } from '../lib/auth'
 
 
+
 function Navbar() {
+  const [sideBarShow, setSideBarShow] = React.useState(false)
   const isAuth = isAuthenticated()
   const navigate = useNavigate()
+  const handleSideBar = () => setSideBarShow(!sideBarShow)
+
 
   const handleLogout = () => {
     removeToken()
@@ -38,7 +42,43 @@ function Navbar() {
           )}
         </div>
       </nav>
-      
+
+      <nav className="nav burger-toggle">
+        <Link to="/"><img src={logo} className="logo"></img></Link>
+        <Link to="/" className="brand-name"></Link>
+        <div className="burger-icon" onClick={handleSideBar}>
+          <Hamburger toggled={sideBarShow} toggle={setSideBarShow} />
+        </div>
+        <div className={
+          sideBarShow
+            ? 'side-nav-menu-container active'
+            : 'side-nav-menu-container'
+        }>
+          <div onClick={handleSideBar}>
+            <div className="nav-buttons">
+              <ul>
+                {isAuth ? (
+                  <>
+                    <li className="li-buttons"><a href="/cocktails" className="li-hrefs">Cocktails</a></li>
+                    <li className="li-buttons"><a href="/profile" className="li-hrefs">Profile</a></li>
+                    <li className="li-buttons" onClick={handleLogout}><a href="/" className="li-hrefs">Log out</a></li>
+                  </>
+                ) : (
+                  <>
+                    <div className='auth-burger'>
+                      <li className="li-buttons"><a href="/login" className="li-hrefs">Login</a></li>
+                      <li className="li-buttons"><a href="/register" className="li-hrefs">Register</a></li>
+                    </div>
+                  </>
+                )}
+              </ul>
+            </div>
+
+          </div>
+          
+        </div>
+      </nav>
+
     </>
   )
 }
