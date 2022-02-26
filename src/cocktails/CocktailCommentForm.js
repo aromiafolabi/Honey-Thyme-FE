@@ -15,19 +15,15 @@ function CocktailCommentForm({ fetchCocktail, setCocktail }) {
     cocktail: cocktailId,
     owner: profileId,
   }
-  console.log(typeof(cocktailId), typeof(profileId))
-  console.log(cocktailId, profileId)
 
   const handleChange = (e) => {
     setCommentValue(e.target.value)
-    console.log(e.target.value)
 
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      // const id = getId()
       await createCocktailComment(cocktailId, cocktailData, { content: commentValue })
       const cocktailWithComment = await getSingleCocktail(cocktailId)
       setCocktail(cocktailWithComment.data)
@@ -49,7 +45,9 @@ function CocktailCommentForm({ fetchCocktail, setCocktail }) {
           <div className="control2">
             <button type="login-button" className="message-button">Comment</button>
           </div>
-          {/* {isError && <p className="help is-danger">Please write a comment and try again!</p>} */}
+          {isError ? ( <p className="help is-danger">Please write a comment and try again!</p>) : (
+            <p>Thank you for your comment!</p>
+          )}
         </div>
       </form>
     </div>

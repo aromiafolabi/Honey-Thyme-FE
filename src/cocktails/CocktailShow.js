@@ -37,6 +37,7 @@ function CocktailShow() {
           const ownerId = String(saved.owner.id)
           if (ownerId === profileId){
             setHasSaved(true)
+            setSaveId(saved.id)
           }
           console.log(saved)
           return
@@ -92,16 +93,18 @@ function CocktailShow() {
     e.preventDefault()
     try {
       const removeClick = await removeSaves(cocktailId, saveId, cocktailData)
-      console.log(removeClick.data)
+      console.log(removeClick)
+      setSaveId(saveId)
       setHasSaved(false)
     } catch (err){
       console.log(err)
     }
   }
 
+  
+
   return (
     <div>
-
       <div className="back-button-area">
         <button type="button" className="back-button">
           <a href="javascript:window.history.back();" className="back-button-light">Back</a>

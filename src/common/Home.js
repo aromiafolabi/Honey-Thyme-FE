@@ -32,8 +32,12 @@ function Home() {
   
   React.useEffect(() => {
     setTimeout(() => {
-      setTimedPopUp((true))
-    }, 2000)
+      if (isAuthenticated() === true){
+        setTimedPopUp(false)
+      } else {
+        setTimedPopUp(true)
+      }
+    }, 6000) 
   }, [])
 
   const masonryOptions = {
@@ -85,12 +89,10 @@ function Home() {
         }        
       </Masonry>
 
-      {/* {!isAuthenticated ?  */}
+  
       <PopUp trigger={timedPopUp} setTrigger={setTimedPopUp} className="popup-home">
       </PopUp> 
-      {/* : */}
-      {/* //   <PopUp trigger={timedPopUp} setTrigger={setTimedPopUp} className="popup-none"></PopUp> */}
-      {/* } */}
+      
   
 
     </>

@@ -76,6 +76,7 @@ function CocktailIndex() {
               key={cocktail.id}
               image={cocktail.image}
               cocktailId={cocktail.id}
+              saveId={cocktail.savedBy.id}
             />
           </li>
         ))

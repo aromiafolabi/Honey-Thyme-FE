@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { getToken } from './auth'
+import { baseUrl } from '../config'
 
-const baseUrl = '/api'
+
 
 function headers() {
   return {
@@ -13,23 +14,23 @@ function headers() {
 // * GET COCKTAILS
 
 export function getAllCocktails() {
-  return axios.get(`${baseUrl}/cocktails`)
+  return axios.get(`${baseUrl}/cocktails/`)
 }
 
 export function getSingleCocktail(cocktailId) {
-  return axios.get(`${baseUrl}/cocktails/${cocktailId}`)
+  return axios.get(`${baseUrl}/cocktails/${cocktailId}/`)
 }
 
 export function deleteCocktail(cocktailId) {
-  return axios.delete(`${baseUrl}/cocktails/${cocktailId}`, headers())
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/`, headers())
 }
 
 export function addSaves(cocktailId, cocktailData) {
   return axios.post(`${baseUrl}/cocktails/${cocktailId}/saved/`, cocktailData, headers())
 }
 
-export function removeSaves(cocktailId, savedId, cocktailData) {
-  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}`, headers(), cocktailData)
+export function removeSaves(cocktailId, savedId, cocktailData, profileId) {
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/saved/${savedId}/`, headers(), cocktailData, profileId)
 }
 
 // * LOGIN/REGISTER
@@ -64,7 +65,7 @@ export function createCocktailComment(cocktailId, cocktailData) {
 }
 
 export function deleteCocktailComment(cocktailId, commentId) {
-  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/comments/${commentId}`, headers())
+  return axios.delete(`${baseUrl}/cocktails/${cocktailId}/comments/${commentId}/`, headers())
 }
 
 export function getProfileInfo(profileId) {

@@ -3,11 +3,13 @@ import { getProfileInfo } from '../lib/api'
 import { getId } from '../lib/auth'
 import CocktailCard from '../cocktails/CocktailCard'
 import Masonry from 'react-masonry-component'
+import { Link } from 'react-router-dom'
 
 
 function Profile() {
 
   const [profileInfo, setProfileInfo] = React.useState(null)
+
 
   React.useEffect(() => {
     const getData = async () => {
@@ -30,7 +32,7 @@ function Profile() {
     gutter: 30,
     itemSelector: '.photo-item',
   }
-
+  console.log(profileInfo)
   return (
     <>
       <div>
@@ -91,15 +93,18 @@ function Profile() {
               {
                 (profileInfo && (profileInfo.savedCocktail.length > 0)) && 
             profileInfo.savedCocktail.map(saves => (
-              <li className={'photo-item'} key={saves.id}>
-                <CocktailCard
-                  className={'photo-list-3'}
-                  key={saves.id}
-                  image={saves.cocktail.image}
-                  cocktailId={saves.cocktail.id}
-                  profileid={saves.owner}
-                />
-              </li>
+              <Link to={CocktailCard} key={saves.id}>
+                <li className={'photo-item'} key={saves.id}>
+                  <CocktailCard
+                    className={'photo-list-3'}
+                    key={saves.id}
+                    image={saves.cocktail.image}
+                    cocktailId={saves.cocktail.id}
+                    profileId={saves.owner.id}
+                    saveId={saves.id}
+                  />
+                </li>
+              </Link>
             ))
               }
             </Masonry>
