@@ -8,7 +8,7 @@ I worked alongside my partner [Esin](https://github.com/EsinYilmazbilek) and we 
 ### Deployment
 The app was deployed with Heroku on the backend and netlify on the frontend. The deployed application can be found here: [DeployedApp](https://honey-thyme.netlify.app)
 
-### Geeting Started
+### Getting Started
 Click the Code button above to download the source code. In the terminal, enter the following commands:
  * To install all the dependencies listed in the package.json: `npm i` 
 * Navigate into the shell `pipenv shell`
